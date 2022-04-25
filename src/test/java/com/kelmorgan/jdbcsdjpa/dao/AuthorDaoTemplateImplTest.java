@@ -35,14 +35,14 @@ class AuthorDaoTemplateImplTest {
 
         Author author = authorDao.getById(1L);
 
-        author.setLastName("Kufre");
+        author.setLastName("Kufre Godwin");
 
         Author updatedAuthor = authorDao.updateAuthor(author);
 
         System.out.println(updatedAuthor);
 
         assertThat(updatedAuthor).isNotNull();
-        assertThat(updatedAuthor.getLastName()).isEqualTo("Kufre");
+        assertThat(updatedAuthor.getLastName()).isEqualTo("Kufre Godwin");
 
     }
 

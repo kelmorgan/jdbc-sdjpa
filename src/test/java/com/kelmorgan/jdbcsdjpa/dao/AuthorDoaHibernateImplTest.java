@@ -9,6 +9,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.test.context.ActiveProfiles;
 
+import java.util.List;
+
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -23,10 +25,28 @@ class AuthorDoaHibernateImplTest {
 
 
     @Test
+    void testFindAllAuthors() {
+        List<Author> authors = authorDao.findAll();
+
+        System.out.println(authors);
+        assertThat(authors).isNotNull();
+        assertThat(authors.size()).isGreaterThan(0);
+    }
+
+    @Test
+    void testGetAuthorList() {
+        List<Author> authors = authorDao.getListAuthorByLastName("Wall");
+
+        System.out.println(authors);
+        assertThat(authors).isNotNull();
+        assertThat(authors.size()).isGreaterThan(0);
+    }
+
+    @Test
     void testDeleteAuthor() {
         authorDao.deleteAuthorById(4L);
 
-        assertThrows(EmptyResultDataAccessException.class, () -> authorDao.getById(4L));
+       assertThat(authorDao.getById(4L)).isNull();
     }
 
     @Test
