@@ -50,7 +50,7 @@ class AuthorDaoTemplateImplTest {
     void saveAuthorTest() {
         Author author = new Author();
         author.setFirstName("Kel");
-        author.setLastName("Morgan222");
+        author.setLastName("Morgan2226");
 
         Author savedAuthor = authorDao.saveNewAuthor(author);
 

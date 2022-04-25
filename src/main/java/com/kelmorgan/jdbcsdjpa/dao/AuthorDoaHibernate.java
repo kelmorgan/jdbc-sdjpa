@@ -2,7 +2,7 @@ package com.kelmorgan.jdbcsdjpa.dao;
 
 import com.kelmorgan.jdbcsdjpa.domain.Author;
 
-public interface AuthorDoaJpa {
+public interface AuthorDoaHibernate {
 
     Author getById(Long id);
 

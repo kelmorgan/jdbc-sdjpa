@@ -16,10 +16,10 @@ import static org.junit.jupiter.api.Assertions.*;
 @DataJpaTest
 @ComponentScan(basePackages = {"com.kelmorgan.jdbcsdjpa.dao"})
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-class AuthorDoaJpaImplTest {
+class AuthorDoaHibernateImplTest {
 
     @Autowired
-    AuthorDoaJpa authorDao;
+    AuthorDoaHibernate authorDao;
 
 
     @Test
