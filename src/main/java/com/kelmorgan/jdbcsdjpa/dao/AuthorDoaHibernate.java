@@ -19,5 +19,8 @@ public interface AuthorDoaHibernate {
     List<Author> getListAuthorByLastName(String lastName);
     List<Author> findAll();
 
+    Author findAuthorByNative(String firstName, String lastName);
+
+
 
 }

@@ -23,10 +23,6 @@ public class AuthorDoaHibernateImpl implements AuthorDoaHibernate {
 
     @Override
     public Author findAuthorByName(String firstName, String lastName) {
-
-//        TypedQuery<Author> query = getEntityManager().createQuery("select a from Author a " +
-//                "where a.firstName = :first_name and a.lastName = :last_name ", Author.class);
-
         TypedQuery<Author> query = getEntityManager().createNamedQuery("find_by_name", Author.class);
         query.setParameter("first_name", firstName);
         query.setParameter("last_name", lastName);
@@ -74,7 +70,7 @@ public class AuthorDoaHibernateImpl implements AuthorDoaHibernate {
         EntityManager em = getEntityManager();
 
         try {
-            TypedQuery<Author> query = em.createQuery("select a from Author a where a.lastName like :last_name",Author.class);
+            TypedQuery<Author> query = em.createQuery("select a from Author a where a.lastName like :last_name", Author.class);
             query.setParameter("last_name", lastName + "%");
             return query.getResultList();
         } finally {
@@ -86,14 +82,28 @@ public class AuthorDoaHibernateImpl implements AuthorDoaHibernate {
     public List<Author> findAll() {
         EntityManager em = getEntityManager();
         try {
-            TypedQuery<Author> typedQuery = em.createNamedQuery("author_find_all",Author.class);
+            TypedQuery<Author> typedQuery = em.createNamedQuery("author_find_all", Author.class);
 
             return typedQuery.getResultList();
-        }
-        finally {
+        } finally {
             em.close();
         }
 
+    }
+
+    @Override
+    public Author findAuthorByNative(String firstName, String lastName) {
+        EntityManager em = getEntityManager();
+        try {
+            Query thisQuery = em.createNativeQuery("select * from author where first_name = ? and last_name = ? ", Author.class);
+
+            thisQuery.setParameter(1, firstName);
+            thisQuery.setParameter(2, lastName);
+
+            return (Author) thisQuery.getSingleResult();
+        } finally {
+            em.close();
+        }
     }
 
 
