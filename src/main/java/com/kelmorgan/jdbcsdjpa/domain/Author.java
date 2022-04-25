@@ -1,9 +1,7 @@
 package com.kelmorgan.jdbcsdjpa.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.experimental.Tolerate;
 
 import javax.persistence.*;
