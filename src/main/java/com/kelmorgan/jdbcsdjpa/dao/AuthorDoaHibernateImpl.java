@@ -10,7 +10,6 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-@Component
 @RequiredArgsConstructor
 public class AuthorDoaHibernateImpl implements AuthorDoaHibernate {
 
